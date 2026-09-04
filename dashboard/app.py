@@ -1,4 +1,4 @@
-"""Northstar read-only evaluation dashboard for the RevIQ prototype."""
+"""RevIQ read-only evaluation dashboard for the prototype."""
 
 import json
 import re
@@ -15,7 +15,7 @@ AUDIT_PATH = ROOT / "audit_log.jsonl"
 SCOPE_PATH = ROOT / "SCOPE_LOCK.md"
 
 st.set_page_config(
-    page_title="Northstar | Evaluation Dashboard",
+    page_title="RevIQ | Evaluation Dashboard",
     page_icon="N",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -24,31 +24,41 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    :root { --line: #334155; --muted: #94a3b8; --surface: #1a2438; --teal: #10b981; --amber: #f59e0b; --red: #ef4444; }
-    .block-container { max-width: 1240px; padding: 2rem 2.5rem 4rem; }
-    .brand { display: flex; align-items: baseline; gap: 12px; margin-bottom: 1.25rem; }
-    .brand-name { color: #e2e8f0; font-size: 1.55rem; font-weight: 750; letter-spacing: 0; }
+    :root { --line: #2d3b53; --muted: #91a4bd; --surface: #1a2438; --teal: #10b981; --amber: #f59e0b; --red: #ef4444; --cyan: #38bdf8; }
+    .block-container { max-width: 1360px; padding: 1.65rem 2.35rem 3rem; }
+    .brand { display: flex; align-items: baseline; gap: 12px; margin-bottom: 0.8rem; }
+    .brand-name { color: #f1f5f9; font-size: 1.55rem; font-weight: 800; letter-spacing: 0; }
     .brand-label { color: var(--muted); font-size: 0.86rem; font-weight: 600; }
-    .warning { background: #2b2415; border: 1px solid #76551c; border-left: 4px solid var(--amber);
-        border-radius: 6px; color: #fcd34d; padding: 0.85rem 1rem; margin: 0 0 2rem;
+    .warning { background: #211d16; border: 1px solid #725523; border-left: 4px solid var(--amber);
+        border-radius: 4px; color: #fcd34d; padding: 0.7rem 0.9rem; margin: 0 0 1.6rem;
     }
     .warning strong { color: #fbbf24; }
-    .hero { border-bottom: 1px solid var(--line); padding: 0.5rem 0 2rem; margin-bottom: 2rem; }
+    .hero { border-bottom: 1px solid var(--line); padding: 0.2rem 0 1.55rem; margin-bottom: 1.4rem; }
     .eyebrow { color: var(--teal); font-size: 0.75rem; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; }
-    .anchor { color: #e2e8f0; font-size: 1.45rem; line-height: 1.45; max-width: 950px; margin: 0.45rem 0 0; }
-    .section { border-top: 1px solid var(--line); padding-top: 1.6rem; margin-top: 2.6rem; }
-    .section h2 { color: #e2e8f0; font-size: 1.18rem; margin: 0; }
-    .section p { color: var(--muted); font-size: 0.92rem; margin: 0.35rem 0 1.1rem; }
-    [data-testid="stMetric"] { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1rem 1.1rem; }
+    .anchor { color: #e2e8f0; font-size: 1.25rem; line-height: 1.48; max-width: 980px; margin: 0.45rem 0 0; }
+    .section { border-top: 1px solid var(--line); padding-top: 1.15rem; margin-top: 1.75rem; }
+    .section h2 { color: #f1f5f9; font-size: 1.03rem; letter-spacing: 0.01em; margin: 0; }
+    .section p { color: var(--muted); font-size: 0.82rem; margin: 0.3rem 0 0.8rem; }
+    [data-testid="stMetric"] { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.75rem 0.9rem; min-height: 106px; }
     [data-testid="stMetricLabel"] { color: var(--muted); }
     [data-testid="stMetricValue"] { color: var(--ink); }
     .mini-note { color: var(--muted); font-size: 0.8rem; margin-top: 0.65rem; }
     .audit-meta { color: var(--muted); font-size: 0.82rem; margin-bottom: 0.35rem; }
-    .scope-box { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1rem 1.15rem; overflow-wrap: anywhere; }
+    .scope-box { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.9rem 1rem; overflow-wrap: anywhere; color: #cbd5e1; font-size: 0.84rem; line-height: 1.55; }
+    .side-brand { color: #f1f5f9; font-size: 1.25rem; font-weight: 800; margin-bottom: 0; }
+    .side-kicker { color: var(--cyan); font-size: 0.63rem; font-weight: 800; letter-spacing: 0.12em; }
+    .side-meta { border-top: 1px solid var(--line); color: var(--muted); font-family: monospace; font-size: 0.65rem; letter-spacing: 0.08em; line-height: 1.9; margin-top: 2rem; padding-top: 0.7rem; }
+    .pipeline-stage { background: var(--surface); border: 1px solid var(--line); border-top: 2px solid var(--cyan); border-radius: 4px; min-height: 84px; padding: 0.65rem 0.7rem; }
+    .pipeline-num { color: var(--cyan); font-family: monospace; font-size: 0.68rem; }
+    .pipeline-title { color: #f1f5f9; font-size: 0.78rem; font-weight: 750; letter-spacing: 0.04em; margin-top: 0.3rem; }
+    .pipeline-copy { color: var(--muted); font-size: 0.68rem; line-height: 1.35; margin-top: 0.25rem; }
+    [data-testid="stDataFrame"] { border: 1px solid var(--line); }
+    code { color: #7dd3fc; }
     @media (max-width: 700px) {
         .block-container { padding: 1.25rem 1rem 3rem; }
         .anchor { font-size: 1.15rem; }
         .brand { gap: 8px; }
+        .pipeline-stage { min-height: 76px; }
     }
     </style>
     """,
@@ -105,27 +115,38 @@ def _report_table(report: str, heading: str) -> pd.DataFrame:
 report = _read_report()
 audit_df = _audit_frame(_read_audit())
 
-st.sidebar.markdown("## Northstar")
-st.sidebar.caption("Evaluation Dashboard")
+st.sidebar.markdown('<div class="side-brand">RevIQ</div><div class="side-kicker">GOVERNED REVENUE RECOVERY</div>', unsafe_allow_html=True)
+st.sidebar.markdown('<div class="side-meta">READ-ONLY<br>SIMULATION MODE<br>EVALUATION PHASE</div>', unsafe_allow_html=True)
 view = st.sidebar.radio(
     "Navigate",
-    ["Overview", "Evaluation", "Governance", "Planted Edge Cases", "Audit Trail", "Scope"],
+    ["01 / Overview", "02 / Evaluation", "03 / Governance", "04 / Planted Edge Cases", "05 / Audit Trail", "06 / Scope & Methodology"],
     label_visibility="collapsed",
 )
 
-st.markdown('<div class="brand"><span class="brand-name">Northstar</span><span class="brand-label">Evaluation Dashboard</span></div>', unsafe_allow_html=True)
+st.markdown('<div class="brand"><span class="brand-name">RevIQ</span><span class="brand-label">Governed Revenue Recovery</span></div>', unsafe_allow_html=True)
 st.markdown('<div class="warning"><strong>SIMULATED SYSTEM</strong> Phase 7 performs no real payment gateway calls and moves no real money.</div>', unsafe_allow_html=True)
 
-if view == "Overview":
-    st.markdown('<div class="hero"><div class="eyebrow">Governed revenue recovery</div><div class="anchor">A governed AI agent that watches failed subscription payments, diagnoses why they failed, predicts whether they\'re recoverable, selects the recovery action with the highest expected value, executes it within strict policy bounds, and proves exactly how much revenue it recovered — while knowing when to stop and hand off to a human.</div></div>', unsafe_allow_html=True)
+if view.endswith("Overview"):
+    st.markdown('<div class="hero"><div class="eyebrow">RevIQ / governed revenue recovery</div><div class="anchor">An AI agent that detects failed subscription payments, diagnoses failure causes, predicts recoverability, selects governed recovery actions, and proves the outcome through an immutable audit trail.</div></div>', unsafe_allow_html=True)
     st.markdown('<div class="section"><h2>Evaluation Snapshot</h2><p>Official Phase 9 results from the held-out evaluation report.</p></div>', unsafe_allow_html=True)
     metric_columns = st.columns(4)
     metric_columns[0].metric("Recovery rate", _metric(report, "recovery rate"), "vs 0% no-action baseline")
     metric_columns[1].metric("Action accuracy", _metric(report, "action accuracy"), "Exact match")
     metric_columns[2].metric("Recoverability ROC-AUC", _metric(report, "recoverability ROC-AUC"), "Raw score")
     metric_columns[3].metric("AUTO_ESCALATED", _metric(report, "AUTO_ESCALATED count"), "of 33 gated rows")
+    st.markdown('<div class="section"><h2>Financial Impact</h2><p>Simulated value recovered from the evaluated subscription renewal failures.</p></div>', unsafe_allow_html=True)
+    impact = st.columns(3)
+    impact[0].metric("LTV at risk", "INR 58.28L", "INR 5,827,770.91 exact")
+    impact[1].metric("Simulated recovered", "INR 41.08L", "INR 4,107,584.89 exact")
+    impact[2].metric("Recovery rate", "70.48%", "vs 0% no-action baseline")
+    st.markdown('<div class="section"><h2>System Pipeline</h2><p>Every renewal failure follows the same inspectable path.</p></div>', unsafe_allow_html=True)
+    pipeline = st.columns(7)
+    stages = [("01", "DETECT", "Payment failure detected"), ("02", "DIAGNOSE", "Determine failure cause"), ("03", "PREDICT", "Estimate recoverability"), ("04", "DECIDE", "Select recovery action"), ("05", "GOVERN", "Apply policy constraints"), ("06", "EXECUTE", "Simulated action dispatch"), ("07", "AUDIT", "Record immutable evidence")]
+    for column, (number, title, copy) in zip(pipeline, stages):
+        with column:
+            st.markdown('<div class="pipeline-stage"><div class="pipeline-num">{}</div><div class="pipeline-title">{}</div><div class="pipeline-copy">{}</div></div>'.format(number, title, copy), unsafe_allow_html=True)
 
-elif view == "Evaluation":
+elif view.endswith("Evaluation"):
     st.markdown('<div class="section"><h2>Evaluation Results</h2><p>Read-only metrics from the official Phase 9 report.</p></div>', unsafe_allow_html=True)
     metric_columns = st.columns(4)
     metric_columns[0].metric("Recovery rate", _metric(report, "recovery rate"))
@@ -136,7 +157,7 @@ elif view == "Evaluation":
     st.dataframe(_report_table(report, "## Revenue Recovery"), hide_index=True, width="stretch")
     st.info("Action accuracy is 6.06%; the report documents a systematic optimistic recovery bias and 0 of 5 planted edge cases matched.")
 
-elif view == "Governance":
+elif view.endswith("Governance"):
     st.markdown('<div class="section"><h2>Governance Evidence</h2><p>Gate outcomes and compliance status, with native chart hover details.</p></div>', unsafe_allow_html=True)
     gate_data = pd.DataFrame({"status": ["PASSED", "AUTO_ESCALATED", "BLOCKED"], "rows": [31, 1, 1], "percentage": [93.9, 3.0, 3.0]})
     chart = alt.Chart(gate_data).mark_bar().encode(
@@ -149,7 +170,7 @@ elif view == "Governance":
     st.caption("PASSED and OK use teal; AUTO_ESCALATED uses amber; BLOCKED and HALTED use muted red.")
     st.dataframe(pd.DataFrame({"compliance_status": ["OK"], "count": [33], "percentage": ["100.0%"]}), hide_index=True, width="stretch")
 
-elif view == "Planted Edge Cases":
+elif view.endswith("Planted Edge Cases"):
     st.markdown('<div class="section"><h2>Planted Edge Cases</h2><p>Complete five-row table from the official evaluation report.</p></div>', unsafe_allow_html=True)
     edge_start = report.split("## Planted Edge Cases", 1)[1] if "## Planted Edge Cases" in report else ""
     edge_match = re.search(r"(\| payment_id .*?)(?:\n\nCorrect final actions:|\Z)", edge_start, re.S)
@@ -162,7 +183,7 @@ elif view == "Planted Edge Cases":
             st.dataframe(edge_frame.style.map(color_match, subset=["match"]), hide_index=True, width="stretch")
     st.caption("0 of 5 planted edge cases matched the ground-truth final action.")
 
-elif view == "Audit Trail":
+elif view.endswith("Audit Trail"):
     st.markdown('<div class="section"><h2>Audit Trail Explorer</h2><p>Read-only evidence from the append-only audit log.</p></div>', unsafe_allow_html=True)
     filter_left, filter_right = st.columns([1, 1])
     phases = ["All phases"] + sorted(audit_df["phase"].dropna().unique().tolist()) if not audit_df.empty else ["All phases"]
@@ -182,7 +203,7 @@ elif view == "Audit Trail":
             st.caption("Phase: {}   |   Payment: {}".format(entry["phase"], entry["payment_id"]))
             st.code(entry["detail"], language="json")
 
-elif view == "Scope":
+elif view.endswith("Scope & Methodology"):
     st.markdown('<div class="section"><h2>Scope and Methodology</h2><p>Source of truth: SCOPE_LOCK.md.</p></div>', unsafe_allow_html=True)
     if SCOPE_PATH.exists():
         scope_text = SCOPE_PATH.read_text(encoding="utf-8")
