@@ -73,7 +73,12 @@ def _candidate_evs(row: pd.Series) -> Dict[str, float]:
 
     return {
         "RETRY_NOW": value(COST_RETRY_NOW) if category == "TEMPORARY" else None,
-        "RETRY_LATER": value(COST_RETRY_LATER) if retries < MAX_RETRIES else None,
+        # RETRY_LATER assumes the failure may self-resolve; CUSTOMER_ACTION_NEEDED cases require the customer to act, so blind retry is not a valid recovery path regardless of EV math.
+        "RETRY_LATER": (
+            value(COST_RETRY_LATER)
+            if retries < MAX_RETRIES and category != "CUSTOMER_ACTION_NEEDED"
+            else None
+        ),
         "SEND_UPDATE_LINK": (
             value(COST_SEND_UPDATE_LINK)
             if category == "CUSTOMER_ACTION_NEEDED"

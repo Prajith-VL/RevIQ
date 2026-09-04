@@ -48,5 +48,50 @@
     "category": "TEMPORARY",
     "confidence": 0.85,
     "explanation": "The payment failed due to a soft card decline for a highly reliable customer with 30 successful past renewals and high LTV. This indicates a transient issue such as temporary bank processing limits or temporary authorization holds rather than a permanent card failure."
+  },
+  "PMT-00114": {
+    "category": "TEMPORARY",
+    "confidence": 0.88,
+    "explanation": "The failure code CARD_DECLINED_SOFT indicates a transient issuer issue, and the customer has a strong history of 26 successful renewals with zero previous retries on this attempt. An automated retry should be scheduled before requiring customer intervention."
+  },
+  "PMT-00124": {
+    "category": "TEMPORARY",
+    "confidence": 0.88,
+    "explanation": "The payment failed due to insufficient funds, but given the customer's high LTV and long history of 36 successful renewals, this is likely a temporary liquidity issue suitable for smart retries."
+  },
+  "PMT-00115": {
+    "category": "TEMPORARY",
+    "confidence": 0.88,
+    "explanation": "A soft decline code for a long-tenured customer with a clean payment history indicates a transient authorization or processing issue. Automated retries should resolve this without requiring immediate customer intervention."
+  },
+  "PMT-00085": {
+    "category": "TEMPORARY",
+    "confidence": 0.9,
+    "explanation": "The failure is due to insufficient funds for a long-standing customer with 38 successful renewals and zero prior failures. This soft decline is likely a temporary liquidity issue that can be resolved with automated retries."
+  },
+  "PMT-00107": {
+    "category": "TEMPORARY",
+    "confidence": 0.85,
+    "explanation": "The soft decline failure code indicates a transient issue such as temporary insufficient funds or issuer processing limits. Given the customer's strong history of 28 successful renewals over 412 days, this is likely temporary and worth retrying."
+  },
+  "PMT-00090": {
+    "category": "TEMPORARY",
+    "confidence": 0.82,
+    "explanation": "The failure code INSUFFICIENT_FUNDS represents a temporary soft decline, though three retries have already been exhausted. The customer has a history of successful renewals, suggesting the issue will likely resolve once funds are available."
+  },
+  "PMT-00080": {
+    "category": "CUSTOMER_ACTION_NEEDED",
+    "confidence": 0.92,
+    "explanation": "The payment failed because the One-Time Password (OTP) expired before input, which requires the customer to manually authenticate or re-initiate the transaction. Given the customer's strong history of 35 successful renewals, sending a re-authentication prompt is recommended over automated retries."
+  },
+  "PMT-00106": {
+    "category": "TEMPORARY",
+    "confidence": 0.88,
+    "explanation": "The soft decline indicates a transient processing or authorization issue with the issuing bank rather than a permanent account failure. Given the customer's strong history of 34 successful renewals, a scheduled retry is likely to succeed."
+  },
+  "PMT-00125": {
+    "category": "CUSTOMER_ACTION_NEEDED",
+    "confidence": 0.85,
+    "explanation": "The transaction was flagged by risk and fraud detection rules, requiring the customer to authenticate the payment or update their payment details."
   }
 }
