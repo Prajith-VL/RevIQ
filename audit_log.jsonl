@@ -1,0 +1,140 @@
+{"timestamp": "2026-09-04T09:07:14.366799+00:00", "payment_id": "PMT-00001", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.368608+00:00", "payment_id": "PMT-00002", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.370461+00:00", "payment_id": "PMT-00003", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.371734+00:00", "payment_id": "PMT-00004", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.375388+00:00", "payment_id": "PMT-00005", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.376633+00:00", "payment_id": "PMT-00006", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.377673+00:00", "payment_id": "PMT-00007", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.378788+00:00", "payment_id": "PMT-00008", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.379805+00:00", "payment_id": "PMT-00009", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.380816+00:00", "payment_id": "PMT-00010", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.381822+00:00", "payment_id": "PMT-00011", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.382906+00:00", "payment_id": "PMT-00012", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.383996+00:00", "payment_id": "PMT-00013", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.385037+00:00", "payment_id": "PMT-00014", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "MEDIUM"}}
+{"timestamp": "2026-09-04T09:07:14.386044+00:00", "payment_id": "PMT-00015", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.387120+00:00", "payment_id": "PMT-00016", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.388181+00:00", "payment_id": "PMT-00017", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "MEDIUM"}}
+{"timestamp": "2026-09-04T09:07:14.389181+00:00", "payment_id": "PMT-00018", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.390189+00:00", "payment_id": "PMT-00019", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.391144+00:00", "payment_id": "PMT-00020", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.392124+00:00", "payment_id": "PMT-00021", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.393101+00:00", "payment_id": "PMT-00022", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.394067+00:00", "payment_id": "PMT-00023", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.394884+00:00", "payment_id": "PMT-00024", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.395699+00:00", "payment_id": "PMT-00025", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.396709+00:00", "payment_id": "PMT-00026", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.397560+00:00", "payment_id": "PMT-00027", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.398355+00:00", "payment_id": "PMT-00028", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.399133+00:00", "payment_id": "PMT-00029", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.399794+00:00", "payment_id": "PMT-00030", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.400484+00:00", "payment_id": "PMT-00031", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.401121+00:00", "payment_id": "PMT-00032", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.401803+00:00", "payment_id": "PMT-00033", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.402451+00:00", "payment_id": "PMT-00034", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.403092+00:00", "payment_id": "PMT-00035", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.403750+00:00", "payment_id": "PMT-00036", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.404541+00:00", "payment_id": "PMT-00037", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.405149+00:00", "payment_id": "PMT-00038", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.405705+00:00", "payment_id": "PMT-00039", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.406260+00:00", "payment_id": "PMT-00040", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "MEDIUM"}}
+{"timestamp": "2026-09-04T09:07:14.406842+00:00", "payment_id": "PMT-00041", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.407418+00:00", "payment_id": "PMT-00042", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.408033+00:00", "payment_id": "PMT-00043", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.408590+00:00", "payment_id": "PMT-00044", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.409143+00:00", "payment_id": "PMT-00045", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.409788+00:00", "payment_id": "PMT-00046", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.410524+00:00", "payment_id": "PMT-00047", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.411103+00:00", "payment_id": "PMT-00048", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.411666+00:00", "payment_id": "PMT-00049", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.412179+00:00", "payment_id": "PMT-00050", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.412686+00:00", "payment_id": "PMT-00051", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "MEDIUM"}}
+{"timestamp": "2026-09-04T09:07:14.413209+00:00", "payment_id": "PMT-00052", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.413826+00:00", "payment_id": "PMT-00053", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "MEDIUM"}}
+{"timestamp": "2026-09-04T09:07:14.414409+00:00", "payment_id": "PMT-00054", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.414886+00:00", "payment_id": "PMT-00055", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.415394+00:00", "payment_id": "PMT-00056", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.415852+00:00", "payment_id": "PMT-00057", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.416357+00:00", "payment_id": "PMT-00058", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.416851+00:00", "payment_id": "PMT-00059", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.417323+00:00", "payment_id": "PMT-00060", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.417783+00:00", "payment_id": "PMT-00061", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.418239+00:00", "payment_id": "PMT-00062", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.418775+00:00", "payment_id": "PMT-00063", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.419343+00:00", "payment_id": "PMT-00064", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.419801+00:00", "payment_id": "PMT-00065", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.420284+00:00", "payment_id": "PMT-00066", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.420734+00:00", "payment_id": "PMT-00067", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.421196+00:00", "payment_id": "PMT-00068", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:07:14.421672+00:00", "payment_id": "PMT-00069", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:07:14.422130+00:00", "payment_id": "PMT-00070", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.389602+00:00", "payment_id": "PMT-00001", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.390316+00:00", "payment_id": "PMT-00002", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.390885+00:00", "payment_id": "PMT-00003", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.391510+00:00", "payment_id": "PMT-00004", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.392160+00:00", "payment_id": "PMT-00005", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.392779+00:00", "payment_id": "PMT-00006", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.393334+00:00", "payment_id": "PMT-00007", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.393861+00:00", "payment_id": "PMT-00008", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.394533+00:00", "payment_id": "PMT-00009", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.395089+00:00", "payment_id": "PMT-00010", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.395582+00:00", "payment_id": "PMT-00011", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.396086+00:00", "payment_id": "PMT-00012", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.396616+00:00", "payment_id": "PMT-00013", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.397086+00:00", "payment_id": "PMT-00014", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "MEDIUM"}}
+{"timestamp": "2026-09-04T09:14:37.397553+00:00", "payment_id": "PMT-00015", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.398043+00:00", "payment_id": "PMT-00016", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.398537+00:00", "payment_id": "PMT-00017", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "MEDIUM"}}
+{"timestamp": "2026-09-04T09:14:37.399001+00:00", "payment_id": "PMT-00018", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.399453+00:00", "payment_id": "PMT-00019", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.399941+00:00", "payment_id": "PMT-00020", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.400401+00:00", "payment_id": "PMT-00021", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.400862+00:00", "payment_id": "PMT-00022", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.401364+00:00", "payment_id": "PMT-00023", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.401848+00:00", "payment_id": "PMT-00024", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.402305+00:00", "payment_id": "PMT-00025", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.402804+00:00", "payment_id": "PMT-00026", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.403254+00:00", "payment_id": "PMT-00027", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.403697+00:00", "payment_id": "PMT-00028", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.404142+00:00", "payment_id": "PMT-00029", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.404636+00:00", "payment_id": "PMT-00030", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.405100+00:00", "payment_id": "PMT-00031", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.405545+00:00", "payment_id": "PMT-00032", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.405997+00:00", "payment_id": "PMT-00033", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.406579+00:00", "payment_id": "PMT-00034", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.407062+00:00", "payment_id": "PMT-00035", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.407555+00:00", "payment_id": "PMT-00036", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.408007+00:00", "payment_id": "PMT-00037", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.408503+00:00", "payment_id": "PMT-00038", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.408962+00:00", "payment_id": "PMT-00039", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.409446+00:00", "payment_id": "PMT-00040", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "MEDIUM"}}
+{"timestamp": "2026-09-04T09:14:37.409941+00:00", "payment_id": "PMT-00041", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.410418+00:00", "payment_id": "PMT-00042", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.410887+00:00", "payment_id": "PMT-00043", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.411337+00:00", "payment_id": "PMT-00044", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.411833+00:00", "payment_id": "PMT-00045", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.412276+00:00", "payment_id": "PMT-00046", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.412732+00:00", "payment_id": "PMT-00047", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.413182+00:00", "payment_id": "PMT-00048", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.413629+00:00", "payment_id": "PMT-00049", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.414080+00:00", "payment_id": "PMT-00050", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.414565+00:00", "payment_id": "PMT-00051", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "MEDIUM"}}
+{"timestamp": "2026-09-04T09:14:37.415049+00:00", "payment_id": "PMT-00052", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.415570+00:00", "payment_id": "PMT-00053", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "MEDIUM"}}
+{"timestamp": "2026-09-04T09:14:37.416019+00:00", "payment_id": "PMT-00054", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.416490+00:00", "payment_id": "PMT-00055", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.416970+00:00", "payment_id": "PMT-00056", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.417416+00:00", "payment_id": "PMT-00057", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.417946+00:00", "payment_id": "PMT-00058", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "NOT_RECOVERED", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.418430+00:00", "payment_id": "PMT-00059", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.418891+00:00", "payment_id": "PMT-00060", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.419369+00:00", "payment_id": "PMT-00061", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.419837+00:00", "payment_id": "PMT-00062", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.420292+00:00", "payment_id": "PMT-00063", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.420800+00:00", "payment_id": "PMT-00064", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.421355+00:00", "payment_id": "PMT-00065", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.421822+00:00", "payment_id": "PMT-00066", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.422394+00:00", "payment_id": "PMT-00067", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.422924+00:00", "payment_id": "PMT-00068", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
+{"timestamp": "2026-09-04T09:14:37.423461+00:00", "payment_id": "PMT-00069", "phase": "DETECTION", "detail": {"at_risk": true, "outcome": "PENDING", "severity": "HIGH"}}
+{"timestamp": "2026-09-04T09:14:37.423924+00:00", "payment_id": "PMT-00070", "phase": "DETECTION", "detail": {"at_risk": false, "outcome": "RECOVERED"}}
