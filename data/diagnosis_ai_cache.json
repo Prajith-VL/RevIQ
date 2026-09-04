@@ -93,5 +93,60 @@
     "category": "CUSTOMER_ACTION_NEEDED",
     "confidence": 0.85,
     "explanation": "The transaction was flagged by risk and fraud detection rules, requiring the customer to authenticate the payment or update their payment details."
+  },
+  "PMT-00083": {
+    "category": "CUSTOMER_ACTION_NEEDED",
+    "confidence": 0.85,
+    "explanation": "The transaction was blocked due to a security risk flag, requiring the customer to authenticate the payment or contact their issuing bank to remove the restriction."
+  },
+  "PMT-00099": {
+    "category": "TEMPORARY",
+    "confidence": 0.88,
+    "explanation": "The failure code indicates a soft card decline on the initial billing attempt for an established customer with 7 past successful renewals. This points to a transient network or issuer issue that is likely to resolve with an automated retry."
+  },
+  "PMT-00098": {
+    "category": "TEMPORARY",
+    "confidence": 0.85,
+    "explanation": "The failure code CARD_DECLINED_SOFT indicates a transient issuer or balance issue. Given the customer's strong payment history of 18 successful renewals over nearly a year, this failure is likely temporary."
+  },
+  "PMT-00105": {
+    "category": "CUSTOMER_ACTION_NEEDED",
+    "confidence": 0.92,
+    "explanation": "The payment failed because the One-Time Password (OTP) expired before completion. Manual customer intervention is required to re-authenticate and complete the transaction."
+  },
+  "PMT-00101": {
+    "category": "TEMPORARY",
+    "confidence": 0.85,
+    "explanation": "A soft card decline indicates a transient bank issue or temporary limit that may resolve on a subsequent attempt. Given the customer's established subscription history of over 948 days, this failure is likely temporary."
+  },
+  "PMT-00089": {
+    "category": "TEMPORARY",
+    "confidence": 0.9,
+    "explanation": "The payment failed due to insufficient funds on an established subscription with 9 successful renewals and zero retry attempts so far. This is a soft decline that is typically resolved through scheduled retry logic."
+  },
+  "PMT-00093": {
+    "category": "TEMPORARY",
+    "confidence": 0.88,
+    "explanation": "The payment experienced a soft decline on its initial retry attempt for a long-standing customer with 21 successful renewals. This indicates a transient processing or bank authorization issue that is suitable for automated retry logic."
+  },
+  "PMT-00086": {
+    "category": "TEMPORARY",
+    "confidence": 0.92,
+    "explanation": "A soft card decline on a long-standing subscription with 42 successful renewals suggests a transient processing or temporary bank authorization issue. Automated smart retries should be attempted as no retries have occurred yet for this cycle."
+  },
+  "PMT-00100": {
+    "category": "TEMPORARY",
+    "confidence": 0.88,
+    "explanation": "The soft decline occurred on the initial attempt for a long-standing customer with 15 previous successful renewals. This indicates a transient bank processing or authorization issue that is suitable for automated retries."
+  },
+  "PMT-00096": {
+    "category": "TEMPORARY",
+    "confidence": 0.9,
+    "explanation": "The payment failed with a soft decline code on a long-standing subscriber account with 34 successful renewals and zero retries so far. This indicates a transient bank authorization issue that is likely to succeed on a subsequent retry attempt."
+  },
+  "PMT-00072": {
+    "category": "TEMPORARY",
+    "confidence": 0.85,
+    "explanation": "The soft decline indicates a temporary authorization or processing issue with the card issuer rather than a permanent invalidation. Given the customer's strong history of 42 successful renewals, smart retries or temporary dunning should resolve the charge."
   }
 }

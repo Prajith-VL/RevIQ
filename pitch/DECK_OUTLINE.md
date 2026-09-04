@@ -71,15 +71,18 @@
 
 ## 6. Results on Held-Out Data
 
-**Slide structure:** Three metric tiles, one honesty note, and the five-case edge-case result.
+**Slide structure:** Recovery rate as the headline, supporting metrics, the confusion finding, and the five-case edge-case result.
 
-**Reported snapshot from `evaluation/metrics_report.md` (generated before the later Phase 5 CUSTOMER_ACTION_NEEDED eligibility fix):**
-- Recovery rate: **31.77%**
-- Action accuracy: **3.03%**
-- Recoverability ROC-AUC: **0.63**
+**Final official results from `evaluation/metrics_report.md`:**
+- Recovery rate: **70.48%** — INR 41,07,584.89 recovered of INR 58,27,770.91 at risk
+- Action selection exact-match accuracy: **6.06%**
+- Recoverability scoring: **33.33% accuracy**, **0.82 recall**, **0.54 ROC-AUC**
+- AUTO_ESCALATED: **1 of 33 gated rows**
+- Gate distribution: **93.9% PASSED**, **3.0% AUTO_ESCALATED**, **3.0% BLOCKED**
+- Compliance: **100% OK**
 - Planted edge cases correct: **0 of 5**
 
-**Honesty note:** The report also records **20 AI-path UNKNOWN diagnoses** and is explicitly marked incomplete because of Gemini quota/API failures. These numbers are a baseline snapshot, not pitch-deck-final metrics after the Phase 5 fix. Rerun Phase 9 after quota reset before presenting them as final.
+**Calibration finding:** The system is systematically biased toward attempting recovery (`RETRY_NOW`/`RETRY_LATER`) where ground truth preferred `STOP` or `ESCALATE_HUMAN`. That pattern is visible in the confusion matrix and all 5 planted edge cases failing in the same direction. With more reference data, the recoverability model's conservatism could be tuned via the same logistic regression, without touching the governance architecture.
 
 **Evidence:** `evaluation/metrics_report.md`, `audit_log.jsonl`.
 
