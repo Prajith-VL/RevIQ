@@ -54,6 +54,36 @@ st.markdown(
     .pipeline-copy { color: var(--muted); font-size: 0.68rem; line-height: 1.35; margin-top: 0.25rem; }
     [data-testid="stDataFrame"] { border: 1px solid var(--line); }
     code { color: #7dd3fc; }
+    .scope-header { align-items: end; border-bottom: 1px solid var(--line); display: flex; gap: 0.8rem; justify-content: space-between; padding-bottom: 1rem; }
+    .scope-index { color: var(--cyan); font-family: monospace; font-size: 0.9rem; letter-spacing: 0.08em; }
+    .scope-title { color: #f1f5f9; font-size: 1.55rem; font-weight: 760; line-height: 1.1; }
+    .scope-subtitle { color: var(--muted); font-size: 0.83rem; margin-top: 0.42rem; }
+    .source-card, .purpose-card, .boundary-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.85rem 0.95rem; }
+    .source-label, .micro-label { color: var(--cyan); font-family: monospace; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.11em; }
+    .source-file { color: #e2e8f0; font-family: monospace; font-size: 0.9rem; margin-top: 0.4rem; }
+    .source-time { color: var(--muted); font-family: monospace; font-size: 0.68rem; margin-top: 0.45rem; }
+    .purpose-card { align-items: center; display: flex; gap: 1rem; justify-content: space-between; margin-top: 1.2rem; }
+    .purpose-copy { color: #cbd5e1; font-size: 0.88rem; line-height: 1.5; margin-top: 0.35rem; }
+    .ready-state { border-left: 1px solid var(--line); min-width: 150px; padding-left: 1rem; }
+    .ready-value { color: var(--teal); font-family: monospace; font-size: 0.82rem; font-weight: 800; margin-top: 0.35rem; }
+    .ready-dot { color: var(--teal); font-size: 0.75rem; }
+    .scope-card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; border-top: 2px solid var(--cyan); min-height: 126px; padding: 0.75rem 0.8rem; }
+    .scope-card:nth-child(4n+2) { border-top-color: var(--teal); }
+    .scope-card:nth-child(4n+3) { border-top-color: var(--amber); }
+    .scope-card:nth-child(4n+4) { border-top-color: #818cf8; }
+    .scope-card-number { color: var(--muted); font-family: monospace; font-size: 0.67rem; }
+    .scope-card-title { color: #f1f5f9; font-size: 0.77rem; font-weight: 800; letter-spacing: 0.06em; margin: 0.55rem 0 0.45rem; }
+    .scope-card-copy { color: #b8c5d6; font-size: 0.74rem; line-height: 1.42; }
+    .boundary-panel { height: 100%; }
+    .boundary-panel.in-scope { border-top: 2px solid var(--teal); }
+    .boundary-panel.out-scope { border-top: 2px solid var(--red); }
+    .boundary-heading { color: #f1f5f9; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; }
+    .boundary-heading.in { color: var(--teal); }
+    .boundary-heading.out { color: #fca5a5; }
+    .boundary-row { border-top: 1px solid #2d3b53; padding: 0.58rem 0; }
+    .boundary-category { color: var(--muted); font-family: monospace; font-size: 0.67rem; letter-spacing: 0.04em; }
+    .boundary-copy { color: #cbd5e1; font-size: 0.76rem; line-height: 1.35; margin-top: 0.18rem; }
+    .scope-caption { color: var(--muted); font-family: monospace; font-size: 0.68rem; letter-spacing: 0.08em; margin-top: 1rem; }
     @media (max-width: 700px) {
         .block-container { padding: 1.25rem 1rem 3rem; }
         .anchor { font-size: 1.15rem; }
@@ -110,6 +140,20 @@ def _report_table(report: str, heading: str) -> pd.DataFrame:
         [(left.strip(), right.strip()) for left, right in rows if left.strip() != "metric"],
         columns=["metric", "value"],
     )
+
+
+def _scope_rows(scope_text: str) -> pd.DataFrame:
+    """Parse the existing scope boundary table without changing its content."""
+    boundary = scope_text.split("## Scope: In / Out Boundary", 1)[-1]
+    boundary = boundary.split("## Explicitly Excluded From This Build", 1)[0]
+    rows = []
+    for line in boundary.splitlines():
+        if not line.startswith("|") or line.startswith("| Component") or line.startswith("|---"):
+            continue
+        values = [value.strip() for value in line.strip("|").split("|")]
+        if len(values) == 3:
+            rows.append(values)
+    return pd.DataFrame(rows, columns=["category", "in_scope", "out_of_scope"])
 
 
 report = _read_report()
@@ -204,12 +248,47 @@ elif view.endswith("Audit Trail"):
             st.code(entry["detail"], language="json")
 
 elif view.endswith("Scope & Methodology"):
-    st.markdown('<div class="section"><h2>Scope and Methodology</h2><p>Source of truth: SCOPE_LOCK.md.</p></div>', unsafe_allow_html=True)
     if SCOPE_PATH.exists():
         scope_text = SCOPE_PATH.read_text(encoding="utf-8")
-        scope_start = scope_text.find("## Scope: In / Out Boundary")
-        scope_end = scope_text.find("## Explicitly Excluded From This Build")
-        st.markdown('<div class="scope-box">{}</div>'.format(scope_text[scope_start:scope_end if scope_end != -1 else None].replace("\n", "<br>")), unsafe_allow_html=True)
+        scope_rows = _scope_rows(scope_text)
+        scope_updated = pd.Timestamp(SCOPE_PATH.stat().st_mtime, unit="s").strftime("%Y-%m-%d %H:%M:%S")
+
+        st.markdown(
+            '<div class="scope-header"><div><div class="scope-index">06 / SCOPE &amp; METHODOLOGY</div><div class="scope-title">Scope &amp; Methodology</div><div class="scope-subtitle">What this evaluation covers, how it works, and the boundaries of the system.</div></div><div class="source-card"><div class="source-label">▣ &nbsp; SOURCE OF TRUTH</div><div class="source-file">SCOPE_LOCK.md</div><div class="source-time">LAST UPDATED / {}</div></div></div>'.format(scope_updated),
+            unsafe_allow_html=True,
+        )
+
+        ready = "COMPLETE: no AI-path UNKNOWN diagnoses remain." in report
+        st.markdown(
+            '<div class="purpose-card"><div><div class="micro-label">PURPOSE</div><div class="purpose-copy">This document is the single source of truth for what RevIQ does and does not do. It defines the locked scope, evaluation boundaries, and compliance surface for subscription payment recovery.</div></div><div class="ready-state"><div class="micro-label">EVALUATION STATUS</div><div class="ready-value"><span class="ready-dot">●</span> {}</div></div></div>'.format("EVALUATION READY" if ready else "EVALUATION STATUS"),
+            unsafe_allow_html=True,
+        )
+
+        st.markdown('<div class="section"><h2>Scope at a glance</h2><p>Eight locked dimensions of the recovery system.</p></div>', unsafe_allow_html=True)
+        card_columns = st.columns(4)
+        for index, row in scope_rows.iterrows():
+            with card_columns[index % 4]:
+                st.markdown(
+                    '<div class="scope-card"><div class="scope-card-number">{:02d}</div><div class="scope-card-title">{} &nbsp; {}</div><div class="scope-card-copy">{}</div></div>'.format(index + 1, "◆", row["category"].upper(), row["in_scope"]),
+                    unsafe_allow_html=True,
+                )
+
+        st.markdown('<div class="section"><h2>In-scope / out-of-scope boundary</h2><p>The same locked distinctions, presented for fast review.</p></div>', unsafe_allow_html=True)
+        boundary_columns = st.columns(2)
+        with boundary_columns[0]:
+            st.markdown('<div class="boundary-panel in-scope"><div class="boundary-heading in">IN SCOPE</div>', unsafe_allow_html=True)
+            for _, row in scope_rows.iterrows():
+                st.markdown('<div class="boundary-row"><div class="boundary-category">{}</div><div class="boundary-copy">{}</div></div>'.format(row["category"].upper(), row["in_scope"]), unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+        with boundary_columns[1]:
+            st.markdown('<div class="boundary-panel out-scope"><div class="boundary-heading out">OUT OF SCOPE</div>', unsafe_allow_html=True)
+            for _, row in scope_rows.iterrows():
+                st.markdown('<div class="boundary-row"><div class="boundary-category">{}</div><div class="boundary-copy">{}</div></div>'.format(row["category"].upper(), row["out_of_scope"]), unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+
+        st.markdown('<div class="section"><h2>Detailed scope definition</h2><p>Complete source table preserved from SCOPE_LOCK.md.</p></div>', unsafe_allow_html=True)
+        st.dataframe(scope_rows, hide_index=True, width="stretch")
+        st.markdown('<div class="scope-caption">LAST GENERATED / {}</div>'.format(pd.Timestamp(REPORT_PATH.stat().st_mtime, unit="s").strftime("%Y-%m-%d %H:%M:%S")), unsafe_allow_html=True)
     else:
         st.warning("SCOPE_LOCK.md is unavailable.")
 
