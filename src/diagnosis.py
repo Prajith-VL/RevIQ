@@ -2,11 +2,11 @@
 diagnosis.py -- RevIQ Phase 3: Diagnosis Layer
 
 A hybrid diagnosis layer: deterministic rules handle clear-cut failure codes,
-and Anthropic Claude reasoning handles ambiguous or context-dependent failures.
+and Gemini reasoning handles ambiguous or context-dependent failures.
 
 Responsibilities:
   1. Classify failures deterministically if possible (classify_failure_deterministic).
-  2. Call the Anthropic API for reasoning if ambiguous (diagnose_with_ai).
+    2. Call the configured LLM provider for reasoning if ambiguous (diagnose_with_ai).
   3. Combine rules and AI for batch processing (diagnose_batch).
   4. Write structured audit trail entries via audit_log.log_event.
 """
@@ -14,8 +14,10 @@ Responsibilities:
 import os
 import sys
 import json
+import time
 import pandas as pd
-import anthropic
+from google import genai
+from google.genai.errors import ServerError
 
 # Ensure src/ is in the python path
 _SRC_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -67,7 +69,7 @@ def classify_failure_deterministic(row) -> dict:
 
 
 def diagnose_with_ai(row) -> dict:
-    """Fall back to Claude reasoning for ambiguous/context-dependent cases.
+    """Fall back to Gemini reasoning for ambiguous/context-dependent cases.
 
     Args:
         row: Series or dict-like with row context.
@@ -81,12 +83,27 @@ def diagnose_with_ai(row) -> dict:
         "explanation": "AI diagnosis failed, flagged for manual review"
     }
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    payment_id = str(row.get("payment_id"))
+    cache_path = os.path.join(
+        os.path.dirname(_SRC_DIR), "data", "diagnosis_ai_cache.json"
+    )
+    try:
+        with open(cache_path, "r", encoding="utf-8") as cache_file:
+            cache = json.load(cache_file)
+        if not isinstance(cache, dict):
+            cache = {}
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        cache = {}
+
+    if payment_id in cache and isinstance(cache[payment_id], dict):
+        return cache[payment_id]
+
+    api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         return fallback
 
     try:
-        client = anthropic.Anthropic(api_key=api_key)
+        client = genai.Client(api_key=api_key)
 
         prompt = f"""You are an AI subscription payment diagnosis agent. Analyze this payment failure context and classify the failure category.
 
@@ -109,13 +126,19 @@ You must respond ONLY with a raw JSON object and no other text, markdown formatt
 {{"category": "TEMPORARY", "confidence": 0.85, "explanation": "The payment failed due to insufficient funds, but this is a long-standing customer with 36 successful payments. We should retry later."}}
 """
 
-        response = client.messages.create(
-            model="claude-sonnet-4-6",
-            max_tokens=300,
-            messages=[{"role": "user", "content": prompt}]
-        )
+        for attempt in range(3):
+            try:
+                response = client.models.generate_content(
+                    model="gemini-3.6-flash",
+                    contents=prompt,
+                )
+                break
+            except ServerError:
+                if attempt == 2:
+                    raise
+                time.sleep(2)
 
-        content = response.content[0].text.strip()
+        content = response.text.strip()
 
         # Clean markdown fences if present
         if content.startswith("`"):
@@ -126,11 +149,16 @@ You must respond ONLY with a raw JSON object and no other text, markdown formatt
 
         parsed = json.loads(content)
 
-        return {
+        result = {
             "category": str(parsed.get("category", "UNKNOWN")),
             "confidence": float(parsed.get("confidence", 0.0)),
             "explanation": str(parsed.get("explanation", "AI diagnosis completed."))
         }
+
+        cache[payment_id] = result
+        with open(cache_path, "w", encoding="utf-8") as cache_file:
+            json.dump(cache, cache_file, indent=2)
+        return result
     except Exception:
         return fallback
 
@@ -175,6 +203,9 @@ def diagnose_batch(df: pd.DataFrame) -> pd.DataFrame:
                 "diagnosis_method": method
             }
         )
+
+        if method == "AI":
+            time.sleep(4)
 
     df_out["diagnosis_category"] = categories
     df_out["diagnosis_confidence"] = confidences

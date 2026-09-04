@@ -1,0 +1,52 @@
+{
+  "PMT-00006": {
+    "category": "TEMPORARY",
+    "confidence": 0.92,
+    "explanation": "A soft decline code suggests a transient bank or network error for a highly loyal customer with 41 successful past renewals. The issue is likely temporary and can be resolved through automated retries."
+  },
+  "PMT-00016": {
+    "category": "TEMPORARY",
+    "confidence": 0.85,
+    "explanation": "The failure code CARD_DECLINED_SOFT indicates a transient bank or processor issue for a high-value customer with 46 successful past renewals. Automated retries should continue as this is likely a temporary authorization failure."
+  },
+  "PMT-00018": {
+    "category": "TEMPORARY",
+    "confidence": 0.88,
+    "explanation": "A soft card decline typically indicates a transient issue such as temporary issuer unavailability or daily spending limit, which is very likely to resolve given the customer's strong history of 37 successful renewals."
+  },
+  "PMT-00036": {
+    "category": "TEMPORARY",
+    "confidence": 0.92,
+    "explanation": "A soft decline code indicates a transient payment issue such as temporary bank processing limits or insufficient funds. Given the customer's strong payment history of 47 successful renewals, this failure is highly likely to resolve via automated retries."
+  },
+  "PMT-00040": {
+    "category": "CUSTOMER_ACTION_NEEDED",
+    "confidence": 0.9,
+    "explanation": "The payment failed because the OTP timed out during authentication. Customer intervention is required to complete the verification step and retry the transaction."
+  },
+  "PMT-00047": {
+    "category": "TEMPORARY",
+    "confidence": 0.88,
+    "explanation": "The failure code INSUFFICIENT_FUNDS represents a soft decline for a long-standing, high-LTV subscriber with zero retries attempted so far. This issue is typically resolved through scheduled retries as the customer replenishes their account balance."
+  },
+  "PMT-00050": {
+    "category": "TEMPORARY",
+    "confidence": 0.88,
+    "explanation": "The payment failed due to insufficient funds on the initial attempt for a high-value customer with 13 previous successful renewals. This is likely a temporary balance issue that can be resolved through scheduled smart retries."
+  },
+  "PMT-00053": {
+    "category": "CUSTOMER_ACTION_NEEDED",
+    "confidence": 0.92,
+    "explanation": "The payment failed because the One-Time Password (OTP) prompt timed out before completion. Customer intervention is required to re-initiate the payment and complete the 2FA authentication."
+  },
+  "PMT-00055": {
+    "category": "CUSTOMER_ACTION_NEEDED",
+    "confidence": 0.92,
+    "explanation": "The payment failed due to an OTP timeout during 2FA authentication, requiring the customer to actively re-initiate or authorize the transaction."
+  },
+  "PMT-00058": {
+    "category": "TEMPORARY",
+    "confidence": 0.85,
+    "explanation": "The payment failed due to a soft card decline for a highly reliable customer with 30 successful past renewals and high LTV. This indicates a transient issue such as temporary bank processing limits or temporary authorization holds rather than a permanent card failure."
+  }
+}
